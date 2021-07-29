@@ -1,0 +1,17 @@
+extends layout 
+
+block content
+    h1= title
+    table
+        tr
+            th Name
+            th Description
+        each tag in tagList
+            tr(onclick=`window.location.href='${tag.url}'`)
+                td #{tag.name}
+                if tag.description
+                    td #{tag.description}
+                else
+                    td No description available.
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/tag/tagList.css')

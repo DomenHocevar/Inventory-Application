@@ -1,0 +1,32 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: large;
+}
+
+
+td, th {
+    padding: 5px;
+    text-align: start;
+}
+
+
+
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+tr:nth-child(odd) {
+    background-color: beige;
+}
+
+tr:nth-child(1) {
+    background-color: black;
+    color: white;
+}
+
+tr:hover:not(tr:nth-child(1)) {
+    background-color: orangered;
+    cursor: pointer;
+}
