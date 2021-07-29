@@ -2,6 +2,8 @@ extends layout
 
 block content
     h1= title
+
+    p Click on a tag for further information and options.
     table
         tr
             th Name
@@ -13,5 +15,6 @@ block content
                     td #{tag.description}
                 else
                     td No description available.
+                    
 block specificStyle
     link(rel='stylesheet', href='/stylesheets/tag/tagList.css')

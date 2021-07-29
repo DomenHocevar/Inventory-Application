@@ -1,0 +1,27 @@
+extends layout 
+
+block content
+    h1= title
+
+
+    #sectionsWrapper
+        section    
+            h2 Description
+            p
+                if tag.description
+                    | #{tag.description}
+                else 
+                    | No description available.
+        
+        section
+            h2 Items with this tag
+            if (itemsWithTag && itemsWithTag.length)
+                ul
+                    each item in itemsWithTag
+                        li
+                            a(href=item.url) #{item.name}
+            else
+                p There are no items with this tag.
+                    
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/tag/tagDetail.css')
