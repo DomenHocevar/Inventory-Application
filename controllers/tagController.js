@@ -26,3 +26,22 @@ exports.tagDetail = function(req, res, next) {
         res.render("tagDetail", {title: "Tag Details: " + results.tag.name, tag: results.tag, itemsWithTag: results.itemsWithTag});
     });        
 }
+
+exports.tagAddGet = function(req, res) {
+    res.render('tagForm', {title: "Add Genre"})
+}
+
+exports.tagAddPost = function(req, res, next) {
+    const tag = new Tag({
+       name: req.body.name,
+       description: req.body.description 
+    });
+
+    tag.save(function(err) {
+        if (err) {
+            return next(err)
+        }
+
+        res.redirect(tag.url);
+    });
+}

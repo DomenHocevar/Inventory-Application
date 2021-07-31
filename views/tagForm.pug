@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+    h1= title
+
+    form(method='POST' action='')
+        .formGroup
+            label(for = 'name') Enter name:
+            input(type = 'text' id = 'name' name='name' required=true)
+        .formGroup 
+            label(for = 'description') Optionally enter description:
+            textarea(type = 'text' id='description' name='description')
+        input(type="submit")
+                    
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/tag/tagForm.css')

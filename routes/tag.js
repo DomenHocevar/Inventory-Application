@@ -3,10 +3,15 @@ var router = express.Router();
 
 const tagController = require('../controllers/tagController');
 
+
+router.get("/add", tagController.tagAddGet);
+router.post("/add", tagController.tagAddPost);
+
 router.get("/:id", tagController.tagDetail);
 
 router.get("/:id/detail", function(res, req) {
     res.redirect('..')
 });
+
 
 module.exports = router;
