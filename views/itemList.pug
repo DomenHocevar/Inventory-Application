@@ -1,0 +1,22 @@
+extends layout 
+
+block content
+    h1= title
+
+    p Click on an item for further information and options.
+
+    ul(id="itemsWrapper")
+        each item in itemList
+            li(onclick=`window.location.href='${item.url}'`)
+                .imageAndOtherWrapper
+                    img(src="/images/noImageAvailable.png")
+                    .nameAndTagsWrapper
+                        h2 #{item.name}
+                        .tagNamesWrapper
+                            each tag in item.tags
+                                -const colorArray = tag.getColor;
+                                div(class='tagNameColor' style ='background-color: rgb(' + colorArray[0] + ", " + colorArray[1] + ", " + colorArray[2] + ');') #{tag.name}
+                            
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/item/itemList.css')
+    link(rel='stylesheet', href='/stylesheets/tag/tagNameColorClassStyle.css')        

@@ -22,7 +22,7 @@ exports.tagDetail = function(req, res, next) {
         }
     }, function(err, results) {
         if (err) return next(err);
-        
+        console.log(results.tag.getColor);
         res.render("tagDetail", {title: "Tag Details: " + results.tag.name, tag: results.tag, itemsWithTag: results.itemsWithTag});
     });        
 }
