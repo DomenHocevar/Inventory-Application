@@ -11,8 +11,7 @@ block content
         each tag in tagList
             tr(onclick=`window.location.href='${tag.url}'`)
                 td 
-                    - const colorArray = tag.getColor;
-                    div(class='tagNameColor' style ='background-color: rgb(' + colorArray[0] + ", " + colorArray[1] + ", " + colorArray[2] + ');') #{tag.name}
+                    div(class='tagNameColor' style= tag.getColorBackgroundStyleString) #{tag.name}
                 if tag.description
                     td #{tag.description}
                 else

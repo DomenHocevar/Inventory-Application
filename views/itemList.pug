@@ -15,7 +15,7 @@ block content
                         .tagNamesWrapper
                             each tag in item.tags
                                 -const colorArray = tag.getColor;
-                                div(class='tagNameColor' style ='background-color: rgb(' + colorArray[0] + ", " + colorArray[1] + ", " + colorArray[2] + ');') #{tag.name}
+                                div(class='tagNameColor' style = tag.getColorBackgroundStyleString) #{tag.name}
                             
 block specificStyle
     link(rel='stylesheet', href='/stylesheets/item/itemList.css')

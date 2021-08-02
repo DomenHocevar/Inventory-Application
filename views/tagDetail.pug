@@ -1,7 +1,8 @@
 extends layout 
 
 block content
-    h1= title
+    h1= "Tag Details: "
+        span(class='tagNameColor' style=tag.getColorBackgroundStyleString) #{tag.name}
 
 
     #sectionsWrapper
@@ -25,3 +26,5 @@ block content
                     
 block specificStyle
     link(rel='stylesheet', href='/stylesheets/tag/tagDetail.css')
+    link(rel='stylesheet', href='/stylesheets/tag/tagNameColorClassStyle.css')
+    link(rel='stylesheet', href='/stylesheets/detailPages.css')

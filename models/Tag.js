@@ -15,7 +15,7 @@ TagSchema
 });
 
 TagSchema
-.virtual('getColor')
+.virtual('getColorArray')
 .get(function() {
   const mod = 16581375;
   const p = 997;
@@ -38,6 +38,15 @@ TagSchema
 
   return resArray;
 });
+
+
+//Set style= to this string
+TagSchema
+.virtual('getColorBackgroundStyleString')
+.get(function() {
+  const colorArray = this.getColorArray;
+  return 'background-color: rgb(' + colorArray[0] + ", " + colorArray[1] + ", " + colorArray[2] + ');'
+})
 
 
 module.exports = mongoose.model('Tag', TagSchema);
