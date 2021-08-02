@@ -1,0 +1,29 @@
+extends layout 
+
+block content
+    h1= title
+
+    img(src='/images/noImageAvailable.png')
+    #sectionsWrapper
+        section    
+            h2 Description
+            div #{item.description}
+        
+        section
+            h2= "Price: "
+                span #{item.price}
+        section
+            h2= "Number in stock: "
+                span #{item.numberInStock}
+        section
+            h2 Tags
+            ul
+                each tag in item.tags
+                    li(class='tagNameColor' style= tag.getColorBackgroundStyleString) 
+                        a(href=tag.url) #{tag.name}
+
+                    
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/item/itemDetail.css')
+    link(rel='stylesheet', href='/stylesheets/tag/tagNameColorClassStyle.css')
+    link(rel='stylesheet', href='/stylesheets/detailPages.css')

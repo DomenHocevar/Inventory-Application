@@ -10,3 +10,13 @@ exports.itemList = function(req, res, next) {
         res.render('itemList', {title: "Item List", itemList: itemList})
     })
 }
+
+exports.itemDetail = function(req, res) {
+    Item.findById(req.params.id)
+    .orFail()
+    .populate('tags')
+    .exec(function(err, item) {
+        if (err) return next(err);
+        res.render('itemDetail', {title: "Item Details: " + item.name, item: item});
+    })
+}

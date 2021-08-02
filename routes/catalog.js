@@ -12,6 +12,10 @@ router.get("/taglist", tagController.tagList);
 
 const itemController = require('../controllers/itemController');
 
-router.get("/itemList", itemController.itemList);
+router.get("/itemlist", itemController.itemList);
+
+
+const itemRouter = require("./item.js");
+router.use('/item', itemRouter);
 
 module.exports = router;
