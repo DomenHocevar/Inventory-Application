@@ -1,0 +1,17 @@
+extends layout 
+
+block content
+    h1= title
+
+    form(method='POST' action='')
+        .formGroup
+                label Choose tags:
+                #tagsCheckboxInput
+                    each tag in tags
+                        label(class='tagNameColor' style = tag.getColorBackgroundStyleString for=tag._id) #{tag.name}                        
+                            input.checkbox-input(type='checkbox', name='tag', id=tag._id, value=tag._id)
+        input(type="submit")
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/forms.css')
+    link(rel='stylesheet', href='/stylesheets/item/itemListFilter.css')
+    link(rel='stylesheet', href='/stylesheets/tag/tagNameColorClassStyle.css')        

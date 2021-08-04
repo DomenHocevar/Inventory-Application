@@ -1,4 +1,16 @@
 
+#instructionAndFilterButtonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#instructionAndFilterButtonWrapper  button {
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    cursor: pointer;
+}
 
 #itemsWrapper {
     list-style-type: none;

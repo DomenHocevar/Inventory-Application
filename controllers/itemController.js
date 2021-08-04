@@ -8,8 +8,48 @@ exports.itemList = function(req, res, next) {
     .populate('tags')
     .exec(function(err, itemList) {
         if (err) return next(err);
+        if (req.query.requiredTagId) {
+            if (!Array.isArray(req.query.requiredTagId)) req.query.requiredTagId = new Array(req.query.requiredTagId); 
+            itemList = itemList.filter(item => {
+                let ok = true;
+                req.query.requiredTagId.forEach(function(requiredTag) {
+                    let found = false;
+                    item.tags.forEach(tag => {
+                        if (tag._id.toString() === requiredTag) found = true;
+                    })
+                    if (!found) ok = false;
+                });
+
+                return ok;
+            })
+        }
         res.render('itemList', {title: "Item List", itemList: itemList})
     })
+}
+
+exports.itemListFilterGet = function(req, res, next) {
+    Tag.find()
+    .sort({name: 1})
+    .exec(function(err, tags) {
+       if (err) return next(err);
+       res.render('itemListFilter', {title: "Filter Item List", tags: tags}); 
+    });
+}
+
+exports.itemListFilterPost = function(req, res, next) {
+    if (!req.body.tag) {
+        res.redirect("./");
+    } else {
+        let urlString = "";
+        if (!Array.isArray(req.body.tag)) {
+            req.body.tag = new Array(req.body.tag);
+        }
+        for (let i = 0; i < req.body.tag.length; i++) {
+            if (i != 0) urlString += '&';
+            urlString += 'requiredTagId=' + req.body.tag[i];
+        }
+        res.redirect(".?" + urlString);
+    }
 }
 
 exports.itemDetail = function(req, res, next) {
@@ -30,7 +70,6 @@ exports.itemAddGet = function(req, res, next) {
 }
 
 exports.itemAddPost = function(req, res, next) {
-    console.log(req.body.tags);
     const item = new Item({
         name: req.body.name,
         description: req.body.description,
