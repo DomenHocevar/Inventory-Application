@@ -6,10 +6,10 @@ block content
     form(method='POST' action='')
         .formGroup
             label(for = 'name') Enter name:
-            input(type = 'text' id = 'name' name='name' required=true)
+            input(type = 'text' id = 'name' name='name' required=true value=(tag ? tag.name : ""))
         .formGroup 
             label(for = 'description') Optionally enter description:
-            textarea(type = 'text' id='description' name='description')
+            textarea(type = 'text' id='description' name='description' ) #{tag ? tag.description : ""}
         input(type="submit")
                     
 block specificStyle

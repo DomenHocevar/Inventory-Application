@@ -45,3 +45,28 @@ exports.tagAddPost = function(req, res, next) {
         res.redirect(tag.url);
     });
 }
+
+exports.tagUpdateGet = function(req, res, next) {
+    Tag.findById(req.params.id)
+    .orFail()
+    .exec(function(err, tag) {
+        if (err) return next(err);
+        if (!tag) {
+            return next(new Error("No such Tag id"))
+        }
+
+        res.render('tagForm', {title: "Update Tag: " + tag.name, tag: tag})
+    });
+}
+
+exports.tagUpdatePost = function(req, res, next) {
+    const tag = new Tag({
+        name: req.body.name,
+        description: req.body.description,
+        _id: req.params.id
+    });
+    Tag.findByIdAndUpdate(req.params.id, tag, function(err) {
+        if (err) return next(err);
+        res.redirect(tag.url);
+    })
+}

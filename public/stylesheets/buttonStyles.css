@@ -1,0 +1,22 @@
+
+.updateButton {
+    background-color: rgb(210, 238, 255);
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+
+.updateButton:hover {
+    background-color: blue;
+    color: white;
+}
+
+.deleteButton {
+    padding: 0.5em;
+    font-size: 1.5em;
+    background-color: orangered;
+}
+
+.deleteButton:hover {
+    background-color: darkred;
+    color: white;
+}
