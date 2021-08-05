@@ -17,4 +17,8 @@ router.get("/:id/detail", function(res, req) {
 router.get("/:id/update", tagController.tagUpdateGet); 
 router.post("/:id/update", tagController.tagUpdatePost);
 
+router.get("/:id/delete", tagController.tagDeleteGet);
+router.post("/:id/delete", tagController.tagDeletePost);
+
+
 module.exports = router;

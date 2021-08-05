@@ -1,0 +1,11 @@
+
+#deleteContentWrapper {
+
+    margin: 30px auto;
+    width: fit-content;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+}

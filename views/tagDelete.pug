@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+    h1= "Delete Tag: "
+        span(class='tagNameColor' style=tag.getColorBackgroundStyleString onclick="window.location.href='./'") #{tag.name}
+    #deleteContentWrapper     
+        p Do you really want to delete this tag?
+
+        if (itemsWithTag && itemsWithTag.length > 0)
+            p On deleting the following items will lose this tag:
+            ul
+                for item in itemsWithTag
+                    li
+                        a(href=item.url)= item.name
+        else 
+            p There are currently no items with this tag and thus no items will lose any tags.
+
+        form(action="" method="post")
+            button(class="deleteButton") Delete
+
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/tag/tagNameColorClassStyle.css')
+    link(rel='stylesheet', href='/stylesheets/tag/tagDelete.css')
+    link(rel='stylesheet', href='/stylesheets/buttonStyles.css')
