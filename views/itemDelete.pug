@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    h1= "Delete Item: "
+        a(href="./") #{item.name}
+    #deleteContentWrapper     
+        p Do you really want to delete this Item?
+
+        form(action="" method="post")
+            button(class="deleteButton") Delete
+
+block specificStyle
+    link(rel='stylesheet', href='/stylesheets/item/itemDelete.css')
+    link(rel='stylesheet', href='/stylesheets/buttonStyles.css')

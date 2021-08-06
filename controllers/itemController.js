@@ -117,3 +117,21 @@ exports.itemUpdatePost = function(req, res, next) {
         res.redirect(item.url);
     })
 }
+
+exports.itemDeleteGet = function(req, res, next) {
+    Item.findById(req.params.id)
+    .orFail()
+    .exec( function(err, item) {
+        if (err) return next(err);
+        res.render('itemDelete', {title: "Delete Item: " + item.name, item: item});
+    });
+}
+
+exports.itemDeletePost = function(req, res, next) {
+    Item.findByIdAndDelete(req.params.id)
+    .orFail()
+    .exec(function(err) {
+        if (err) return next(err);
+        res.redirect('../../itemlist');
+    });
+}
