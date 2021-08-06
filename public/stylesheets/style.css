@@ -27,3 +27,25 @@ button {
 [onclick] {
   cursor: pointer;
 }
+
+#navbar {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 50px;
+  justify-content: space-between;
+  background-color: darkgrey;
+}
+#rightNavbarElements {
+  display: flex;
+}
+
+#navbar a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 1em;
+}

@@ -2,4 +2,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to a simple #{title}!
+  p It allows you to look up lists of current items and tags and perform create, read, update and delete operations on them. 
+
+block specificStyle
+  link(rel='stylesheet', href='/stylesheets/index.css')

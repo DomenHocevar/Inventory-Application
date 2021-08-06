@@ -5,5 +5,12 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     block specificStyle
   body
+    #navbar        
+      a(href="/") Home
+
+      #rightNavbarElements      
+        a(href="/catalog/itemlist" ) Item List
+        
+        a(href="/catalog/taglist") Tag List
     #contentWrapper
       block content
