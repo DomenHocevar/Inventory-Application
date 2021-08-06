@@ -15,7 +15,7 @@ block content
             #tagsCheckboxInput
                 each tag in tags
                     label(class='tagNameColor' style = tag.getColorBackgroundStyleString for=tag._id) #{tag.name}                        
-                        input.checkbox-input(type='checkbox', name='tag', id=tag._id, value=tag._id checked=(item ? (item.tags.includes(tag._id) ? true : false) : ""))
+                        input.checkbox-input(type='checkbox', name='tag', id=tag._id, value=tag._id checked=(item ? (item.tags.includes(tag._id) ? true : false) : false))
         .formGroup
             label(for='price') Enter price:
             input(type='number' id='price' name='price' required=true value=(item ? item.price : ""))
