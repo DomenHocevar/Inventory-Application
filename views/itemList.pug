@@ -3,9 +3,11 @@ extends layout
 block content
     h1= title
 
-    #instructionAndFilterButtonWrapper
+    #instructionAndButtonsWrapper
         p Click on an item for further information and options.
-        button(onclick="window.location.href='./itemlist/filter';") Filter by tag
+        #buttons
+            button(onclick="window.location.href='./item/add';") Add an item
+            button(onclick="window.location.href='./itemlist/filter';") Filter by tag
     
     ul(id="itemsWrapper")
         each item in itemList

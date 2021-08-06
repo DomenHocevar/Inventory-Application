@@ -6,6 +6,17 @@ table {
     border: 2px solid black;
 }
 
+#instructionAndButtonWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#instructionAndButtonWrapper button {
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5em;
+}
 
 td, th {
     padding: 5px;

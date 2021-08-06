@@ -2,8 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to a simple #{title}!
-  p It allows you to look up lists of current items and tags and perform create, read, update and delete operations on them. 
+  #homeTextContainer
+    p Welcome to a simple #{title}!
+    p It allows you to look up lists of current items and tags and perform create, read, update and delete operations on them.
+    p Tags consist of a name and an optional description while items consist of a name, an optional description, tags, a price and a number in stock. You can filter the items by their tags.
 
 block specificStyle
   link(rel='stylesheet', href='/stylesheets/index.css')

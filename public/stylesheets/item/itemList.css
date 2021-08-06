@@ -1,15 +1,18 @@
 
-#instructionAndFilterButtonWrapper {
+#instructionAndButtonsWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#instructionAndFilterButtonWrapper  button {
+#buttons button {
+    margin-left: 1em;
+}
+
+#instructionAndButtonsWrapper button {
     width: fit-content;
     height: fit-content;
-    padding: 5px;
-    cursor: pointer;
+    padding: 0.5em;
 }
 
 #itemsWrapper {

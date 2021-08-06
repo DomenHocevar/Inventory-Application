@@ -3,7 +3,9 @@ extends layout
 block content
     h1= title
 
-    p Click on a tag for further information and options.
+    #instructionAndButtonWrapper
+        p Click on a tag for further information and options.
+        button(onclick="window.location.href='./tag/add';") Add a tag
     table
         tr
             th Name
