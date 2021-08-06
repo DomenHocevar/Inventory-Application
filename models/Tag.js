@@ -17,7 +17,8 @@ TagSchema
 TagSchema
 .virtual('getColorArray')
 .get(function() {
-  const mod = 16581375;
+  const colorNumber = 150;                
+  const mod = colorNumber * colorNumber * colorNumber;
   const p = 997;
   let fac = 1;
   const id = this._id.toString();
@@ -31,10 +32,11 @@ TagSchema
 
   const resArray = new Array(3);
   for (let i = 0; i < 3; i++) {
-    resArray[i] = res % 255;
-    res /= 255;
+    resArray[i] = res % colorNumber + 256 - colorNumber;
+    res /= colorNumber;
     res = Math.floor(res);
   }
+
 
   return resArray;
 });
