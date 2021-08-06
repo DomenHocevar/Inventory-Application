@@ -14,8 +14,10 @@ block content
             li(onclick=`window.location.href='${item.url}'`)
                 .imageAndOtherWrapper
                     img(src=item.imagePath)
-                    .nameAndTagsWrapper
-                        h2 #{item.name}
+                    .nameAndPriceAndTagsWrapper
+                        .nameAndPriceWrapper
+                            h2 #{item.name}
+                            div #{item.price.toFixed(2)}
                         .tagNamesWrapper
                             each tag in item.tags
                                 -const colorArray = tag.getColor;

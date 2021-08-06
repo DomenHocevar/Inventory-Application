@@ -58,11 +58,25 @@ li:hover {
     cursor: pointer;
 }
 
-.nameAndTagsWrapper {
+.nameAndPriceAndTagsWrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+.nameAndPriceWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameAndPriceWrapper > :nth-child(1){
+    margin-bottom: 0;
+}
+
+.nameAndPriceWrapper > :nth-child(1){
+    margin-bottom: 0;
+}
+
 
 .tagNamesWrapper {
     display: flex;

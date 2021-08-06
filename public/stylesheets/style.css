@@ -37,6 +37,7 @@ button {
   height: 50px;
   justify-content: space-between;
   background-color: darkgrey;
+  z-index: 1;
 }
 #rightNavbarElements {
   display: flex;
