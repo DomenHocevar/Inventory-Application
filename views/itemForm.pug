@@ -6,22 +6,22 @@ block content
     form(method='POST' action='')
         .formGroup
             label(for = 'name') Enter name:
-            input(type = 'text' id = 'name' name='name' required=true)
+            input(type = 'text' id = 'name' name='name' required=true value= (item ? item.name : ""))
         .formGroup 
             label(for = 'description') Optionally enter description:
-            textarea(type = 'text' id='description' name='description')
+            textarea(type = 'text' id='description' name='description') #{item ? item.description : ""}
         .formGroup
             label Choose tags:
             #tagsCheckboxInput
                 each tag in tags
                     label(class='tagNameColor' style = tag.getColorBackgroundStyleString for=tag._id) #{tag.name}                        
-                        input.checkbox-input(type='checkbox', name='tag', id=tag._id, value=tag._id)
+                        input.checkbox-input(type='checkbox', name='tag', id=tag._id, value=tag._id checked=(item.tags.includes(tag._id) ? true : false))
         .formGroup
             label(for='price') Enter price:
-            input(type='number' id='price' name='price' required=true)
+            input(type='number' id='price' name='price' required=true value=(item ? item.price : ""))
         .formGroup
             label(for='numberInStock') Enter number in stock:
-            input(type='number' id='numberInStock' name='numberInStock' required=true)
+            input(type='number' id='numberInStock' name='numberInStock' required=true value=(item ? item.numberInStock : ""))
         input(type="submit")
                     
 block specificStyle

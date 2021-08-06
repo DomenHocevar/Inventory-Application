@@ -1,6 +1,7 @@
 
 const Item = require('../models/Item.js');
 const Tag = require('../models/Tag.js');
+const async = require('async');
 
 exports.itemList = function(req, res, next) {
     Item.find()
@@ -81,5 +82,38 @@ exports.itemAddPost = function(req, res, next) {
     item.save(function(err) {
         if (err) return next(err);
         res.redirect("../item/" + item._id);
+    })
+}
+
+exports.itemUpdateGet = function(req, res, next) {
+    async.parallel({
+        item: function(callback) {
+            Item.findById(req.params.id)
+            .orFail()
+            .exec(callback);
+        },
+        tags: function(callback) {
+            Tag.find(callback);
+        }
+
+    }, function(err, results) {
+        res.render('itemForm', {title: "Update Item: " + results.item.name, item: results.item, tags: results.tags});
+    });
+    
+}
+
+exports.itemUpdatePost = function(req, res, next) {
+    const item = new Item({
+        name: req.body.name,
+        description: req.body.description,
+        tags: req.body.tag,
+        price: req.body.price,
+        numberInStock: req.body.numberInStock,
+        _id: req.params.id
+    });
+
+    Item.findByIdAndUpdate(req.params.id, item, function(err) {
+        if (err) return next(err);
+        res.redirect(item.url);
     })
 }

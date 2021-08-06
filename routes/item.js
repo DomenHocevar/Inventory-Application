@@ -12,4 +12,7 @@ router.get("/:id/detail", function(res, req) {
     res.redirect('..')
 });
 
+router.get("/:id/update", itemController.itemUpdateGet);
+router.post("/:id/update", itemController.itemUpdatePost);
+
 module.exports = router;
