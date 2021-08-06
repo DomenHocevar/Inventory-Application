@@ -2,6 +2,7 @@
 const Item = require('../models/Item.js');
 const Tag = require('../models/Tag.js');
 const async = require('async');
+const fs = require('fs');
 
 exports.itemList = function(req, res, next) {
     Item.find()
@@ -76,6 +77,7 @@ exports.itemAddPost = function(req, res, next) {
         description: req.body.description,
         tags: req.body.tag,
         price: req.body.price,
+        imagePath: (req.file ? req.file.path.substring(6) : undefined),
         numberInStock: req.body.numberInStock
     })
 
@@ -109,11 +111,15 @@ exports.itemUpdatePost = function(req, res, next) {
         tags: req.body.tag,
         price: req.body.price,
         numberInStock: req.body.numberInStock,
+        imagePath: (req.file ? req.file.path.substring(6) : undefined),
         _id: req.params.id
     });
 
-    Item.findByIdAndUpdate(req.params.id, item, function(err) {
+    Item.findByIdAndUpdate(req.params.id, item, function(err, item) {
         if (err) return next(err);
+        if (item.imagePath != "/images/noImageAvailable.png") {
+            fs.unlinkSync("public" + item.imagePath);
+        }
         res.redirect(item.url);
     })
 }
@@ -130,8 +136,11 @@ exports.itemDeleteGet = function(req, res, next) {
 exports.itemDeletePost = function(req, res, next) {
     Item.findByIdAndDelete(req.params.id)
     .orFail()
-    .exec(function(err) {
+    .exec(function(err, item) {
         if (err) return next(err);
+        if (item.imagePath != "/images/noImageAvailable.png") {
+            fs.unlinkSync("public" + item.imagePath);
+        }
         res.redirect('../../itemlist');
     });
 }

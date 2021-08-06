@@ -13,7 +13,7 @@ block content
         each item in itemList
             li(onclick=`window.location.href='${item.url}'`)
                 .imageAndOtherWrapper
-                    img(src="/images/noImageAvailable.png")
+                    img(src=item.imagePath)
                     .nameAndTagsWrapper
                         h2 #{item.name}
                         .tagNamesWrapper

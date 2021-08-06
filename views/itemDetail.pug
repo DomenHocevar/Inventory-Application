@@ -3,7 +3,7 @@ extends layout
 block content
     h1= title
 
-    img(src='/images/noImageAvailable.png')
+    img(src=item.imagePath)
     #updateAndDeleteButtonsWrapper
         button(class="updateButton" onclick=`window.location.href='${item.url}/update'`) Update
         button(class="deleteButton" onclick=`window.location.href='${item.url}/delete'`) Delete

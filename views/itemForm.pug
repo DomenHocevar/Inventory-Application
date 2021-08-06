@@ -3,7 +3,7 @@ extends layout
 block content
     h1= title
 
-    form(method='POST' action='')
+    form(method='POST' action='' enctype="multipart/form-data")
         .formGroup
             label(for = 'name') Enter name:
             input(type = 'text' id = 'name' name='name' required=true value= (item ? item.name : ""))
@@ -22,6 +22,10 @@ block content
         .formGroup
             label(for='numberInStock') Enter number in stock:
             input(type='number' id='numberInStock' name='numberInStock' required=true value=(item ? item.numberInStock : ""))
+        .formGroup
+            label(for='itemImage') Optionally choose an image that will represent the item.
+            input(type='file' id='itemImage' name='itemImage' accept="image/*")
+            
         input(type="submit")
                     
 block specificStyle

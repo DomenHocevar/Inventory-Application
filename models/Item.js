@@ -7,7 +7,8 @@ let ItemSchema = new Schema(
         description: {type: String},
         tags: [{type: Schema.Types.ObjectId, ref: 'Tag'}],
         price: {type: Number, required: true},
-        numberInStock: {type: Number, required: true}
+        numberInStock: {type: Number, required: true},
+        imagePath: {type: String, default: "/images/noImageAvailable.png"}
     }
 );
 
